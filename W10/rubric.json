@@ -1,0 +1,270 @@
+{
+  "topic_summary": "探討自駕車在公共道路部署的倫理正當性，需權衡風險承擔、整體效益、責任追溯等原則，並透過批判性對話完善立場。",
+  "rubrics": {
+    "Q2": {
+      "scoring_criteria": {
+        "9-10": "P1 事實陳述清晰且相關，P2 規範理由深刻且邏輯嚴謹，C 結論與前提一致且具有說服力。",
+        "7-8": "P1 事實陳述基本清晰，P2 規範理由合理但略顯薄弱，C 結論大致一致但說服力稍弱。",
+        "5-6": "P1 事實陳述模糊或不完全相關，P2 規範理由簡單或缺乏深度，C 結論與前提連結鬆散。",
+        "3-4": "P1 事實陳述不明確或缺失，P2 規範理由不清晰或缺乏邏輯，C 結論未能從前提推導。",
+        "0-2": "未遵循 P1+P2+C 格式，或內容嚴重偏離問題要求。"
+      },
+      "format_checklist": [
+        "是否包含 P1（事實）",
+        "是否包含 P2（規範）",
+        "是否包含 C（結論）",
+        "P1 是否支援 P2",
+        "P2 是否支援 C"
+      ]
+    },
+    "Q3": {
+      "scoring_criteria": {
+        "9-10": "清楚指出反對立場的首要考量，精準點出其根本問題，並深入分析其忽略或犧牲的面向，邏輯嚴密且具有原創性。",
+        "7-8": "指出反對立場的首要考量和根本問題，分析忽略或犧牲的面向合理，但略顯表面或缺乏深度。",
+        "5-6": "基本符合格式要求，但對根本問題或忽略面向的分析不夠清晰或完整。",
+        "3-4": "格式勉強符合，但內容模糊、邏輯不連貫，或未能準確指出根本問題。",
+        "0-2": "未遵循格式要求，或內容嚴重偏離問題核心。"
+      },
+      "format_checklist": [
+        "是否包含「把＿＿當成判斷首要考量」",
+        "是否包含「看似合理，但它的根本問題是＿＿」",
+        "是否包含「因為它忽略（或犧牲了）＿＿」",
+        "根本問題是否與首要考量邏輯相關",
+        "忽略或犧牲的面向是否具體且合理"
+      ]
+    },
+    "Q5": {
+      "scoring_criteria": {
+        "9-10": "根據 Q4 選擇的立場，理由說明完整且邏輯嚴謹，能有效回應 Q3 的反對論，並展現深刻反思。",
+        "7-8": "理由說明基本完整，能回應反對論，但邏輯或深度略顯不足。",
+        "5-6": "理由說明勉強符合格式，但回應反對論不夠明確或缺乏說服力。",
+        "3-4": "理由說明模糊或不完整，未能有效回應反對論。",
+        "0-2": "未遵循格式要求，或內容與 Q4 選擇的立場不符。"
+      },
+      "format_checklist": [
+        "是否符合 Q4 選擇的立場格式要求",
+        "是否明確回應 Q3 的反對論",
+        "理由是否邏輯一致且具體",
+        "是否展現對立場的反思"
+      ]
+    },
+    "Q6": {
+      "scoring_criteria": {
+        "9-10": "明確指出代價內容、承擔主體，並深入討論值得程度或補償方案，分析全面且具說服力。",
+        "7-8": "明確指出代價內容和承擔主體，討論值得程度或補償方案合理但略顯簡單。",
+        "5-6": "基本指出代價內容和承擔主體，但討論值得程度或補償方案不夠深入。",
+        "3-4": "代價內容或承擔主體描述模糊，缺乏對值得程度或補償方案的討論。",
+        "0-2": "未明確指出代價內容或承擔主體，或完全未討論值得程度或補償方案。"
+      },
+      "format_checklist": [
+        "是否明確指出代價內容",
+        "是否明確指出承擔主體",
+        "是否討論值得程度或補償方案"
+      ]
+    }
+  },
+  "tag_taxonomy": {
+    "Q2": {
+      "error_tags": {
+        "missing_fact": "缺少事實前提",
+        "irrelevant_fact": "事實不相關",
+        "weak_normative_reason": "規範理由薄弱",
+        "logical_gap": "邏輯斷層",
+        "conclusion_mismatch": "結論不匹配",
+        "vague_statement": "陳述模糊",
+        "circular_reasoning": "循環論證"
+      },
+      "quality_tags": {
+        "strong_fact_basis": "事實基礎堅實",
+        "deep_normative_insight": "規範洞見深刻",
+        "logical_coherence": "邏輯一致",
+        "persuasive_conclusion": "結論有說服力",
+        "original_argument": "論點原創"
+      },
+      "argument_types": [
+        "utilitarian_ethics",
+        "deontological_ethics",
+        "rights_based",
+        "risk_distribution",
+        "accountability_focus",
+        "public_good",
+        "precautionary_principle"
+      ]
+    },
+    "Q3": {
+      "error_tags": {
+        "misidentified_objection": "反對論認定錯誤",
+        "superficial_analysis": "分析表面",
+        "logical_inconsistency": "邏輯矛盾",
+        "unclear_root_problem": "根本問題不明",
+        "missing_sacrifice": "未指出犧牲面",
+        "strawman_objection": "稻草人論證",
+        "vague_counterargument": "反對論模糊"
+      },
+      "quality_tags": {
+        "precise_objection": "反對論精準",
+        "deep_root_analysis": "根本分析深入",
+        "clear_sacrifice": "犧牲面向清晰",
+        "strong_counterpoint": "反駁有力",
+        "original_critique": "批判原創"
+      },
+      "critique_types": [
+        "consequentialist_critique",
+        "deontological_critique",
+        "justice_based_critique",
+        "pragmatic_critique",
+        "moral_absolutism",
+        "slippery_slope",
+        "false_dichotomy"
+      ]
+    },
+    "Q5": {
+      "error_tags": {
+        "inconsistent_with_q4": "與 Q4 立場不符",
+        "unaddressed_objection": "未回應反對論",
+        "weak_justification": "理由薄弱",
+        "logical_flaw": "邏輯缺陷",
+        "vague_condition": "條件模糊",
+        "missing_revision": "未說明修正內容"
+      },
+      "quality_tags": {
+        "consistent_defense": "一致辯護",
+        "effective_rebuttal": "有效反駁",
+        "clear_conditions": "條件清晰",
+        "thoughtful_revision": "深思修正",
+        "balanced_perspective": "觀點平衡"
+      },
+      "argument_types": [
+        "defense_of_original_position",
+        "conditional_qualification",
+        "major_revision",
+        "concession_with_reason",
+        "nuanced_adjustment"
+      ]
+    },
+    "Q6": {
+      "error_tags": {
+        "unclear_cost": "代價不明確",
+        "missing_stakeholder": "未指定承擔主體",
+        "no_justification": "未討論值得程度",
+        "superficial_compensation": "補償方案表面",
+        "logical_leap": "邏輯跳躍",
+        "overgeneralization": "過度概括"
+      },
+      "quality_tags": {
+        "explicit_cost": "代價明確",
+        "clear_stakeholder": "承擔主體清晰",
+        "justified_tradeoff": "權衡合理",
+        "practical_compensation": "補償方案實用",
+        "balanced_analysis": "分析平衡"
+      },
+      "argument_types": [
+        "cost_benefit_analysis",
+        "stakeholder_analysis",
+        "ethical_tradeoff",
+        "compensatory_justice",
+        "risk_assessment"
+      ]
+    },
+    "Q7": {
+      "theme_clusters": [
+        "technical_feasibility",
+        "ethical_dilemmas",
+        "legal_accountability",
+        "public_acceptance",
+        "economic_implications",
+        "safety_standards",
+        "moral_responsibility"
+      ]
+    }
+  },
+  "tag_display": {
+    "Q2": {
+      "missing_fact": "缺事實",
+      "irrelevant_fact": "事實不相關",
+      "weak_normative_reason": "理由薄弱",
+      "logical_gap": "邏輯斷層",
+      "conclusion_mismatch": "結論不符",
+      "vague_statement": "陳述模糊",
+      "circular_reasoning": "循環論",
+      "strong_fact_basis": "事實堅實",
+      "deep_normative_insight": "洞見深刻",
+      "logical_coherence": "邏輯一致",
+      "persuasive_conclusion": "結論有力",
+      "original_argument": "論點原創",
+      "utilitarian_ethics": "效益倫理",
+      "deontological_ethics": "義務倫理",
+      "rights_based": "權利導向",
+      "risk_distribution": "風險分配",
+      "accountability_focus": "責任聚焦",
+      "public_good": "公共利益",
+      "precautionary_principle": "預防原則"
+    },
+    "Q3": {
+      "misidentified_objection": "反對論錯",
+      "superficial_analysis": "分析淺",
+      "logical_inconsistency": "邏輯矛盾",
+      "unclear_root_problem": "問題不明",
+      "missing_sacrifice": "未提犧牲",
+      "strawman_objection": "稻草人",
+      "vague_counterargument": "反對論模糊",
+      "precise_objection": "反對論精準",
+      "deep_root_analysis": "根本分析",
+      "clear_sacrifice": "犧牲清晰",
+      "strong_counterpoint": "反駁有力",
+      "original_critique": "批判原創",
+      "consequentialist_critique": "後果批判",
+      "deontological_critique": "義務批判",
+      "justice_based_critique": "正義批判",
+      "pragmatic_critique": "務實批判",
+      "moral_absolutism": "道德絕對",
+      "slippery_slope": "滑坡論",
+      "false_dichotomy": "假二分"
+    },
+    "Q5": {
+      "inconsistent_with_q4": "立場不符",
+      "unaddressed_objection": "未回應",
+      "weak_justification": "理由弱",
+      "logical_flaw": "邏輯缺陷",
+      "vague_condition": "條件模糊",
+      "missing_revision": "未修正",
+      "consistent_defense": "一致辯護",
+      "effective_rebuttal": "有效反駁",
+      "clear_conditions": "條件清晰",
+      "thoughtful_revision": "深思修正",
+      "balanced_perspective": "觀點平衡",
+      "defense_of_original_position": "維護原立場",
+      "conditional_qualification": "有條件限定",
+      "major_revision": "重大修正",
+      "concession_with_reason": "有理讓步",
+      "nuanced_adjustment": "細緻調整"
+    },
+    "Q6": {
+      "unclear_cost": "代價不明",
+      "missing_stakeholder": "未指定主體",
+      "no_justification": "未討論值得",
+      "superficial_compensation": "補償淺",
+      "logical_leap": "邏輯跳躍",
+      "overgeneralization": "過度概括",
+      "explicit_cost": "代價明確",
+      "clear_stakeholder": "主體清晰",
+      "justified_tradeoff": "權衡合理",
+      "practical_compensation": "補償實用",
+      "balanced_analysis": "分析平衡",
+      "cost_benefit_analysis": "成本效益",
+      "stakeholder_analysis": "利害關係人",
+      "ethical_tradeoff": "倫理權衡",
+      "compensatory_justice": "補償正義",
+      "risk_assessment": "風險評估"
+    },
+    "Q7": {
+      "technical_feasibility": "技術可行",
+      "ethical_dilemmas": "倫理困境",
+      "legal_accountability": "法律責任",
+      "public_acceptance": "公眾接受",
+      "economic_implications": "經濟影響",
+      "safety_standards": "安全標準",
+      "moral_responsibility": "道德責任"
+    }
+  }
+}

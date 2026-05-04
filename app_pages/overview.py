@@ -2,7 +2,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 from app_pages.utils import (
-    require_data, display_tag, get_scored_questions, jump_to_student, get_ai_score
+    require_data, display_tag, get_scored_questions, jump_to_student
 )
 
 st.title("📊 全班概覽")
@@ -154,40 +154,3 @@ with tab2:
     render_student_cards(needs_attention, "concern")
 with tab3:
     render_student_cards(interesting, "note")
-
-# ── Section F: AI Detection (hidden) ─────────────────────────────────────────
-if st.session_state.show_ai_detect:
-    st.divider()
-    st.subheader("🔒 AI 疑似偵測統計")
-
-    ai_stats = quant.get("ai_detection_stats", {})
-    low_count = ai_stats.get("low_0to3", 0)
-    mid_count = ai_stats.get("medium_4to6", 0)
-    high_count = ai_stats.get("high_suspicion_7plus", 0)
-
-    c1, c2, c3 = st.columns(3)
-    c1.metric("低疑似（0-3）", low_count)
-    c2.metric("無法判斷（4-6）", mid_count)
-    c3.metric("高度疑似（7-10）", high_count)
-
-    fig_ai = go.Figure(go.Bar(
-        x=[low_count, mid_count, high_count],
-        y=["低疑似", "無法判斷", "高度疑似"],
-        orientation="h",
-        marker_color=["#2ca02c", "#f1c40f", "#d62728"],
-    ))
-    fig_ai.update_layout(height=150, margin=dict(t=0, b=0, l=0, r=0))
-    st.plotly_chart(fig_ai, use_container_width=True)
-
-    ai_summary = llm.get("ai_detection_summary", {})
-    pattern_text = ai_summary.get("high_suspicion_pattern", "")
-    if pattern_text:
-        st.markdown(f"**LLM 摘要：** {pattern_text}")
-
-    notable_cases = ai_summary.get("notable_cases", [])
-    if notable_cases:
-        st.markdown("**值得注意的案例：**")
-        cases_df = pd.DataFrame(notable_cases)
-        if "student_index" in cases_df.columns:
-            cases_df["student_index"] = cases_df["student_index"].apply(lambda x: f"#{x}")
-        st.dataframe(cases_df, use_container_width=True, hide_index=True)

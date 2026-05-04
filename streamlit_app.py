@@ -14,7 +14,6 @@ st.session_state.setdefault("wf2", None)
 st.session_state.setdefault("csv_df", None)
 st.session_state.setdefault("tag_display", {})
 st.session_state.setdefault("wf1_by_index", {})
-st.session_state.setdefault("show_ai_detect", False)
 st.session_state.setdefault("jump_to_student", None)
 
 # Check if data is loaded
@@ -38,13 +37,5 @@ page = st.navigation(
     },
     position="sidebar",
 )
-
-# Shared sidebar: AI detection toggle
-with st.sidebar:
-    st.divider()
-    st.session_state.show_ai_detect = st.toggle(
-        "🔒 顯示 AI 疑似偵測資料",
-        value=st.session_state.show_ai_detect,
-    )
 
 page.run()

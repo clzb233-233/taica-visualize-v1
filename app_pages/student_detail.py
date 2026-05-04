@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from app_pages.utils import (
     require_data, display_tag, get_scored_questions, get_all_questions,
-    get_student_eval, get_student_tags, get_student_score, get_ai_score
+    get_student_eval, get_student_tags, get_student_score
 )
 
 st.title("🔍 個別學生")
@@ -14,7 +14,6 @@ rubric = st.session_state.rubric
 wf1: list = st.session_state.wf1
 wf1_by_index: dict = st.session_state.wf1_by_index
 csv_df = st.session_state.get("csv_df")
-show_ai = st.session_state.show_ai_detect
 
 scored_qs = get_scored_questions(rubric)
 all_qs = get_all_questions(rubric, wf1[0] if wf1 else None)
@@ -46,7 +45,6 @@ for record in wf1:
     row["一致性"] = "✅" if q4.get("is_consistent", True) else "⚠️"
 
     row["_exceptional"] = overall.get("exceptional", False)
-    row["AI 疑似"] = get_ai_score(record)
 
     rows.append(row)
 
@@ -66,10 +64,6 @@ with filter_cols[2]:
 with filter_cols[3]:
     consistency_filter = st.selectbox("一致性", ["全部", "只看不一致"], key="filter_consistency")
 
-ai_range = (0, 10)
-if show_ai:
-    ai_range = st.slider("AI 疑似分數", 0, 10, (0, 10), key="filter_ai")
-
 # Apply filters
 filtered_df = all_df.copy()
 if selected_positions:
@@ -88,13 +82,6 @@ elif exceptional_filter == "只看特別差":
 
 if consistency_filter == "只看不一致":
     filtered_df = filtered_df[filtered_df["一致性"] == "⚠️"]
-
-if show_ai:
-    filtered_df = filtered_df[
-        filtered_df["AI 疑似"].apply(
-            lambda x: (ai_range[0] <= x <= ai_range[1]) if x is not None else True
-        )
-    ]
 
 st.caption(f"顯示 {len(filtered_df)} / {len(all_df)} 位學生")
 st.divider()

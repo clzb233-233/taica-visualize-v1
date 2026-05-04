@@ -88,8 +88,6 @@ st.divider()
 
 # ── Student Table ─────────────────────────────────────────────────────────────
 display_cols = ["#", "立場"] + [q["id"] for q in scored_qs] + ["平均分", "一致性"]
-if show_ai:
-    display_cols.append("AI 疑似")
 
 display_df = filtered_df[display_cols].copy()
 
@@ -295,22 +293,3 @@ if selected_rows:
                         with st.container(border=True):
                             st.markdown(f"**備注：** {note}")
 
-        # AI Detection
-        if show_ai:
-            st.divider()
-            ai_det = record.get("ai_detection", {})
-            ai_score = ai_det.get("score", ai_det.get("ai_score", 0)) or 0
-            ai_reason = ai_det.get("reason", "")
-            st.markdown("**🔒 AI 疑似偵測**")
-            color = "green" if ai_score <= 3 else ("orange" if ai_score <= 6 else "red")
-            st.markdown(f"分數：**:{color}[{ai_score}/10]**")
-            bar_color = "#2ca02c" if ai_score <= 3 else ("#f39c12" if ai_score <= 6 else "#d62728")
-            bar_pct = int(ai_score * 10)
-            st.markdown(
-                f"""<div style='background:#eee;border-radius:6px;height:14px;width:100%'>
-                <div style='background:{bar_color};border-radius:6px;height:14px;width:{bar_pct}%'></div>
-                </div>""",
-                unsafe_allow_html=True,
-            )
-            if ai_reason:
-                st.markdown(f"說明：{ai_reason}")

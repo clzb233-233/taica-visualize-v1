@@ -7,6 +7,15 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stToolbarActions"] { display: none; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Initialize global session state
 st.session_state.setdefault("rubric", None)
 st.session_state.setdefault("wf1", None)

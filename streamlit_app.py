@@ -7,15 +7,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.markdown(
-    """
-    <style>
-    [data-testid="stToolbarActions"] { display: none; }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 # Initialize global session state
 st.session_state.setdefault("rubric", None)
 st.session_state.setdefault("wf1", None)
@@ -48,3 +39,8 @@ page = st.navigation(
 )
 
 page.run()
+
+with st.sidebar:
+    st.divider()
+    st.caption("**題目欄位對照**")
+    st.caption("Q1 → A 欄　Q2 → B 欄　Q3 → C 欄　Q4 → D 欄　Q5 → E 欄　Q6 → F 欄　Q7 → G 欄")

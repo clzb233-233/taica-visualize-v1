@@ -23,12 +23,12 @@ def parse_csv(content: bytes) -> pd.DataFrame:
 
 @st.cache_data
 def load_default_data():
-    """Load data from W10 folder."""
-    base_path = "W10"
+    """Load data from W{N} folder."""
+    base_path = "W11"
     rubric_path = os.path.join(base_path, "rubric.json")
     wf1_path = os.path.join(base_path, "wf1_results.json")
     wf2_path = os.path.join(base_path, "wf2_report.json")
-    csv_path = os.path.join(base_path, "W10.csv")
+    csv_path = os.path.join(base_path, "W11.csv")
     config_path = os.path.join(base_path, "config.json")
 
     rubric = wf1 = wf2 = csv_df = config = None

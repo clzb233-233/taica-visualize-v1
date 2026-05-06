@@ -88,8 +88,6 @@ st.divider()
 
 # ── Student Table ─────────────────────────────────────────────────────────────
 display_cols = ["#", "立場"] + [q["id"] for q in scored_qs] + ["平均分", "一致性"]
-if show_ai:
-    display_cols.append("AI 疑似")
 
 display_df = filtered_df[display_cols].copy()
 
@@ -151,34 +149,34 @@ if selected_rows:
             q_type = q["type"]
 
             with q_tabs[i]:
-                # Column reference caption + CSV index from config
-                viz_config = st.session_state.get("viz_config")
-                if viz_config:
-                    col_info = viz_config.get("csv_column_mapping", {}).get(qid)
-                    if col_info:
-                        st.caption(f"題目說明：{col_info['description']}")
-                    csv_col_index = col_info["index"] if col_info else None
-                else:
-                    # Fallback: Q1->index1, Q2->index2, etc.
-                    q_num = int(qid[1:]) if qid.startswith("Q") and qid[1:].isdigit() else None
-                    csv_col_index = q_num if q_num else None
-
-                # Original answer from CSV
+                # Original answer from CSV - FIXED: Map question ID to CSV column
                 csv_answer_displayed = False
                 if csv_df is not None:
                     try:
-                        if csv_col_index is not None and actual_idx < len(csv_df):
-                            raw_ans = csv_df.iloc[actual_idx, csv_col_index]
-                            if pd.notna(raw_ans) and str(raw_ans).strip():
-                                with st.expander("📄 原始回答", expanded=True):
-                                    st.write(str(raw_ans))
-                                csv_answer_displayed = True
+                        # Map question ID to CSV column based on user confirmation:
+                        # Q1=B欄(索引1), Q2=C欄(索引2), Q3=D欄(索引3), Q4=E欄(索引4), 
+                        # Q5=F欄(索引5), Q6=G欄(索引6), Q7=H欄(索引7)
+                        q_num = int(qid[1:]) if qid.startswith('Q') and qid[1:].isdigit() else None
+                        if q_num and 1 <= q_num <= 7:
+                            # CSV columns: 0=Timestamp, 1=Q1, 2=Q2, 3=Q3, 4=Q4, 5=Q5, 6=Q6, 7=Q7
+                            csv_col_index = q_num  # Q1->index1, Q2->index2, etc.
+                            
+                            # Find the student's row in CSV by matching student index
+                            # The CSV data starts from row 0 (after header), and we assume
+                            # the order matches wf1 (which is reasonable for this use case)
+                            if actual_idx < len(csv_df):
+                                raw_ans = csv_df.iloc[actual_idx, csv_col_index]
+                                if pd.notna(raw_ans) and str(raw_ans).strip():
+                                    with st.expander("📄 原始回答", expanded=True):
+                                        st.write(str(raw_ans))
+                                    csv_answer_displayed = True
+                                else:
+                                    st.caption("(此題無原始回答)")
                             else:
-                                st.caption("(此題無原始回答)")
-                        elif csv_col_index is None:
-                            pass  # No mapping for this question
+                                st.caption(f"(學生索引 {actual_idx} 超出 CSV 範圍 {len(csv_df)})")
                         else:
-                            st.caption(f"(學生索引 {actual_idx} 超出 CSV 範圍 {len(csv_df)})")
+                            # For non-Q1-Q7 questions, we don't have CSV mapping
+                            pass
                     except Exception as e:
                         st.caption(f"（原始回答讀取失敗: {str(e)}）")
                 
@@ -295,22 +293,3 @@ if selected_rows:
                         with st.container(border=True):
                             st.markdown(f"**備注：** {note}")
 
-        # AI Detection
-        if show_ai:
-            st.divider()
-            ai_det = record.get("ai_detection", {})
-            ai_score = ai_det.get("score", ai_det.get("ai_score", 0)) or 0
-            ai_reason = ai_det.get("reason", "")
-            st.markdown("**🔒 AI 疑似偵測**")
-            color = "green" if ai_score <= 3 else ("orange" if ai_score <= 6 else "red")
-            st.markdown(f"分數：**:{color}[{ai_score}/10]**")
-            bar_color = "#2ca02c" if ai_score <= 3 else ("#f39c12" if ai_score <= 6 else "#d62728")
-            bar_pct = int(ai_score * 10)
-            st.markdown(
-                f"""<div style='background:#eee;border-radius:6px;height:14px;width:100%'>
-                <div style='background:{bar_color};border-radius:6px;height:14px;width:{bar_pct}%'></div>
-                </div>""",
-                unsafe_allow_html=True,
-            )
-            if ai_reason:
-                st.markdown(f"說明：{ai_reason}")

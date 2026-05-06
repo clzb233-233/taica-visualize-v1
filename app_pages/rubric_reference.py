@@ -61,20 +61,23 @@ st.divider()
 # ── Section C: Tag Reference ──────────────────────────────────────────────────
 st.subheader("Tag 對照表")
 
-if not scored_qs:
-    st.info("無評分題資料。")
+# Include all questions that have taxonomy data (scored + collect like Q8)
+taxonomy_q_ids = sorted(tag_taxonomy.keys(), key=lambda x: int(x[1:]) if x[1:].isdigit() else 99)
+
+if not taxonomy_q_ids:
+    st.info("無 Tag 資料。")
     st.stop()
 
-tab_labels = [q["label"] for q in scored_qs]
+tab_labels = taxonomy_q_ids
 tabs = st.tabs(tab_labels)
 
-for i, q in enumerate(scored_qs):
-    qid = q["id"]
+for i, qid in enumerate(taxonomy_q_ids):
     with tabs[i]:
         q_taxonomy = tag_taxonomy.get(qid, {})
         error_tags = q_taxonomy.get("error_tags", {})
         quality_tags = q_taxonomy.get("quality_tags", {})
         arg_types = q_taxonomy.get("argument_types", q_taxonomy.get("critique_types", []))
+        theme_clusters = q_taxonomy.get("theme_clusters", [])
         q_display = rubric.get("tag_display", {}).get(qid, {})
 
         t_cols = st.columns(3)
@@ -104,10 +107,15 @@ for i, q in enumerate(scored_qs):
                 st.info("無資料")
 
         with t_cols[2]:
-            st.markdown("**論證類型**")
             if arg_types:
+                st.markdown("**論證類型**")
                 for at in arg_types:
                     cn_name = q_display.get(at, tag_display.get(at, at))
                     st.markdown(f"- **{cn_name}** `{at}`")
+            elif theme_clusters:
+                st.markdown("**主題群**")
+                for tc in theme_clusters:
+                    cn_name = q_display.get(tc, tag_display.get(tc, tc))
+                    st.markdown(f"- **{cn_name}** `{tc}`")
             else:
                 st.info("無資料")

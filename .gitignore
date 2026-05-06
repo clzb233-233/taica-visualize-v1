@@ -47,9 +47,9 @@ Thumbs.db
 *.json
 
 # But keep the sample data in W10 folder for deployment
-!W10/
-!W10/*.csv
-!W10/*.json
+!W11/
+!W11/*.csv
+!W11/*.json
 
 # Logs
 *.log

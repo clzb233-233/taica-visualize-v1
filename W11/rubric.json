@@ -1,0 +1,267 @@
+{
+  "topic_summary": "本週探討台灣創作者協會與 AI 公司之間的訓練資料授權爭議，介紹四種治理立場（創新與揭露平衡、創作者授權優先、結構性公平優先、創新與知識近用優先），要求學生選擇立場、闡述規範理由、提出最強反對論點、檢視立場變化並反思社會位置與選擇代價。",
+  "rubrics": {
+    "Q2": {
+      "scoring_criteria": {
+        "9-10": "事實陳述清晰具體，規範論證充分且與理論相關，結論自然隨前兩部分而來，論證嚴密無顯然漏洞。",
+        "7-8": "事實基本清楚，規範論證合理但可能略欠深度或證據，結論大體對應，整體結構完整。",
+        "5-6": "事實或規範部分較為籠統，證據有限，結論與前文關聯較弱，可能出現小斷裂或重複。",
+        "3-4": "事實欠缺或錯誤，規範論證泛泛而談，結論不明顯或與前文脫節，結構不完整。",
+        "0-2": "未完成三部分或完全離題，缺乏基本論證。"
+      },
+      "format_checklist": [
+        "包含事實陳述(P1)",
+        "包含規範論證(P2)",
+        "包含結論(C)",
+        "三部分按順序出現或明確區分"
+      ]
+    },
+    "Q3": {
+      "scoring_criteria": {
+        "9-10": "精準指出被當作首要考量的項目，深入剖析其根本問題，清楚指出被忽略／犧牲／低估的關鍵面向，論證有力且無邏輯跳躍。",
+        "7-8": "能指出考量與問題，但分析深度或關聯稍嫌不足，結論仍具說服力。",
+        "5-6": "說明较為籠統，證據或例子有限，因果連結不明顯。",
+        "3-4": "僅能點出表面問題，未能深入說明為何是根本問題或被忽略的內容。",
+        "0-2": "未符合格式或完全偏離題目，缺乏基本分析。"
+      },
+      "format_checklist": [
+        "符合「把＿＿當成 AI 訓練資料使用治理的首要考量，看似合理，但它的根本問題是＿＿，因為它忽略／犧牲／低估了＿＿。」的句式",
+        "三個空白皆有具體填入",
+        "使用「忽略」、「犧牲」或「低估」其中之一作為因果連接詞"
+      ]
+    },
+    "Q5": {
+      "scoring_criteria": {
+        "9-10": "完全依照所選 Q4 選項的模板作答，理由充分具體，條件說明清晰，論證邏輯一致並有證據支撐。",
+        "7-8": "基本符合模板，理由較為完整但可能略欠深度或具體例子，條件說明基本清楚。",
+        "5-6": "模板大致對應，但理由泛泛或條件描述模糊，論證有斷裂。",
+        "3-4": "模板不符或只含零散片段，理由缺乏依據，條件說明不明確。",
+        "0-2": "未依任何模板作答或完全離題。"
+      },
+      "format_checklist": [
+        "依 Q4 選項使用對應的句式模板",
+        "給出理由或條件的具體說明",
+        "不出現與所選選項矛盾的內容"
+      ]
+    },
+    "Q6": {
+      "scoring_criteria": {
+        "9-10": "具體指出一項或多項選擇所帶來的代價，說明其對不同利害關係人的影響，並提供現實或理論依據，論證平衡且深入。",
+        "7-8": "能列出代價並說明影響，但深度或證據稍嫌不足，整體仍具說服力。",
+        "5-6": "代價描述較為籠統，影響分析有限，可能只看到單方面。",
+        "3-4": "僅能提及模糊的代價，缺乏具體說明或關聯分析。",
+        "0-2": "未談及代價或完全離題。"
+      },
+      "format_checklist": [
+        "至少明確指出一項選擇所帶來的代價",
+        "說明該代價對誰或何種情況產生影響",
+        "提供事實、理論或例子作為支持"
+      ]
+    },
+    "Q7": {
+      "scoring_criteria": {
+        "9-10": "誠實反思自身社會位置、可能的偏見與特權，提供具體例子或情境，顯示批判性自我覺察與情境化理解。",
+        "7-8": "能指出自身位置與可能的偏見，例子較為一般但仍具反思深度。",
+        "5-6": "反思較為籠統，缺乏具體例子或深入分析，止步於自我描述。",
+        "3-4": "僅泛泛而談，未能連結個人經驗或社會結構。",
+        "0-2": "未進行社會位置反思或完全離題。"
+      },
+      "format_checklist": [
+        "明確提及自身的社會位置（如身份、角色、特權等）",
+        "檢視該位置可能帶來的偏見或視角限制",
+        "提供具體例子或情境說明反思內容"
+      ]
+    }
+  },
+  "tag_taxonomy": {
+    "Q2": {
+      "error_tags": {
+        "missing_fact": "缺少或錯誤的事實陳述",
+        "weak_normative": "規範論證不足或過於泛泛",
+        "unclear_conclusion": "結論不明確或與前文脫節",
+        "irrelevant_content": "出現無關內容或離題論述",
+        "logical_gap": "論證間存在邏輯斷裂或跳躍"
+      },
+      "quality_tags": {
+        "clear_fact": "事實陳述清晰具體",
+        "strong_normative": "規範論證充分且有理據",
+        "logical_flow": "論證連貫、步驟清晰",
+        "concise": "語言簡潔、無贅餘",
+        "evidence_based": "有明確事實或理論依據支撐"
+      },
+      "argument_types": [
+        "utilitarian",
+        "deontological",
+        "virtue_ethics",
+        "procedural_fairness",
+        "economic_impact"
+      ]
+    },
+    "Q3": {
+      "error_tags": {
+        "misident_consideration": "錯誤識別被當作首要考量的項目",
+        "superficial_flaw": "僅指出表面問題而非根本 flaw",
+        "ignoring_context": "忽略相關情境或背景資訊",
+        "false_cause": "錯誤因果推論",
+        "strawman": "構建稻草人論點來攻擊"
+      },
+      "quality_tags": {
+        "precise_id": "精準識別考量項目",
+        "deep_analysis": "深入剖析根本問題",
+        "clear_causality": "清楚說明因果關係",
+        "relevant_counterpoint": "提出相關且有力的反駁",
+        "balanced_critique": "批評兼顧多方面而不偏頗"
+      },
+      "argument_types": [
+        "consequentialist",
+        "rights_based",
+        "procedural_justice",
+        "epistemic",
+        "market_failure"
+      ]
+    },
+    "Q5": {
+      "error_tags": {
+        "wrong_template": "未使用對應 Q4 選項的句式模板",
+        "weak_justification": "理由不足或過於籠統",
+        "vague_condition": "條件描述模糊不清",
+        "contradictory_stmt": "前後自相矛盾",
+        "missing_cause": "缺少論證的因果說明"
+      },
+      "quality_tags": {
+        "correct_template": "正確使用對應模板",
+        "strong_justification": "理由充分具體",
+        "clear_condition": "條件說明明確具體",
+        "logical_consistency": "論證前後一致",
+        "evidence_support": "有證據或例子支撐理由"
+      },
+      "argument_types": [
+        "concession",
+        "qualification",
+        "revision",
+        "retreat",
+        "defend"
+      ]
+    },
+    "Q6": {
+      "error_tags": {
+        "vague_cost": "代價描述過於籠統",
+        "missing_tradeoff": "未討論權衡或取捨",
+        "unrealistic_assump": "依賴不現實的假設",
+        "stakeholder_neglect": "忽略利害關係人的影響",
+        "overemphasis_one": "過度偏重單一面向而忽略其他"
+      },
+      "quality_tags": {
+        "specific_cost": "具體、可量化的代價描述",
+        "balanced_tradeoff": "說明多方面的權衡取捨",
+        "realistic_assump": "基於現實可能的假設",
+        "stakeholder_aware": "顧及不同利害關係人",
+        "evidence_backed": "有實證或理論依據支持"
+      },
+      "argument_types": [
+        "economic",
+        "ethical",
+        "legal",
+        "social",
+        "practical"
+      ]
+    },
+    "Q7": {
+      "error_tags": {
+        "superficial_reflection": "反思僅停留在表層",
+        "bias_denial": "否認或迴避自身可能的偏見",
+        "generic_stmt": "泛泛而談，缺乏具體內容",
+        "low_self_awareness": "自我覺察不足",
+        "overpersonalization": "過度個人化，未連結社會結構"
+      },
+      "quality_tags": {
+        "honest_self_assess": "誠實檢視自身立場與局限",
+        "positionality_recog": "明確認識自身的社會位置",
+        "concrete_examples": "提供具體例子或情境",
+        "critical_awareness": "展現批判性的自我反省",
+        "contextualization": "將個人經驗置於更廣泛的社會脈絡中"
+      },
+      "argument_types": [
+        "standpoint_theory",
+        "reflexivity",
+        "identity_politics",
+        "structural_analysis",
+        "narrative"
+      ]
+    },
+    "Q8": {
+      "theme_clusters": [
+        "bias_and_positionality",
+        "ethical_concerns",
+        "policy_implications"
+      ]
+    }
+  },
+  "tag_display": {
+    "Q2": {
+      "missing_fact": "缺事實",
+      "weak_normative": "弱規範",
+      "unclear_conclusion": "結論不明",
+      "irrelevant_content": "無關內容",
+      "logical_gap": "邏輯斷裂",
+      "clear_fact": "明事實",
+      "strong_normative": "強規範",
+      "logical_flow": "邏輯流",
+      "concise": "簡潔",
+      "evidence_based": "有依據"
+    },
+    "Q3": {
+      "misident_consideration": "錯誤考量",
+      "superficial_flaw": "膚淺瑕疵",
+      "ignoring_context": "忽略上下文",
+      "false_cause": "假因果",
+      "strawman": "稻草人",
+      "precise_id": "精準辨識",
+      "deep_analysis": "深度分析",
+      "clear_causality": "明因果",
+      "relevant_counterpoint": "相關反駁",
+      "balanced_critique": "平衡批判"
+    },
+    "Q5": {
+      "wrong_template": "錯誤模板",
+      "weak_justification": "理由不足",
+      "vague_condition": "條件模糊",
+      "contradictory_stmt": "自相矛盾",
+      "missing_cause": "缺失原因",
+      "correct_template": "正確模板",
+      "strong_justification": "理由充分",
+      "clear_condition": "條件明確",
+      "logical_consistency": "邏輯一致",
+      "evidence_support": "有證據支持"
+    },
+    "Q6": {
+      "vague_cost": "代價模糊",
+      "missing_tradeoff": "缺少權衡",
+      "unrealistic_assump": "不現實假設",
+      "stakeholder_neglect": "忽略利害",
+      "overemphasis_one": "過度偏重",
+      "specific_cost": "具體代價",
+      "balanced_tradeoff": "平衡權衡",
+      "realistic_assump": "現實假設",
+      "stakeholder_aware": "知悉利害",
+      "evidence_backed": "有證據支撐"
+    },
+    "Q7": {
+      "superficial_reflection": "膚淺反思",
+      "bias_denial": "否認偏見",
+      "generic_stmt": "泛泛而談",
+      "low_self_awareness": "低自我覺察",
+      "overpersonalization": "過度個人化",
+      "honest_self_assess": "誠實自我評",
+      "positionality_recog": "位置認識",
+      "concrete_examples": "具體例子",
+      "critical_awareness": "批判覺察",
+      "contextualization": "情境化"
+    },
+    "Q8": {
+      "bias_and_positionality": "偏見反思",
+      "ethical_concerns": "倫理議題",
+      "policy_implications": "政策影響"
+    }
+  }
+}

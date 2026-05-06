@@ -1,0 +1,59 @@
+{
+  "week": 11,
+  "questions": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8"
+  ],
+  "question_types": {
+    "Q1": "mc",
+    "Q2": "scored",
+    "Q3": "scored",
+    "Q4": "consistency",
+    "Q5": "scored",
+    "Q6": "scored",
+    "Q7": "scored",
+    "Q8": "collect"
+  },
+  "mc_question": "Q1",
+  "consistency_question": "Q4",
+  "csv_column_mapping": {
+    "Q1": {
+      "index": 1,
+      "description": "本週立場選擇"
+    },
+    "Q2": {
+      "index": 2,
+      "description": "說明你選擇上述立場的規範理由"
+    },
+    "Q3": {
+      "index": 3,
+      "description": "把反對你立場的主張說到最強"
+    },
+    "Q4": {
+      "index": 4,
+      "description": "你的選擇"
+    },
+    "Q5": {
+      "index": 5,
+      "description": "請說明你上述選項的理由"
+    },
+    "Q6": {
+      "index": 6,
+      "description": "你的選擇有何代價"
+    },
+    "Q7": {
+      "index": 7,
+      "description": "社會位置反思"
+    },
+    "Q8": {
+      "index": 8,
+      "description": "關於這個議題，目前最讓你感到困惑、不確定"
+    }
+  }
+}

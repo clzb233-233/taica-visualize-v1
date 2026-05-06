@@ -36,10 +36,28 @@ def get_scored_questions(rubric: dict) -> list:
 
 
 def get_all_questions(rubric: dict, wf1_record: dict = None) -> list:
-    """Return all question dicts inferred from rubric + optional wf1 record."""
-    scored_ids = set(rubric.get("rubrics", {}).keys())
+    """Return all question dicts, using viz_config if available."""
+    import streamlit as st
+    config = st.session_state.get("viz_config")
 
-    # Infer q-ids from wf1 record
+    if config:
+        q_ids = config.get("questions", [])
+        q_types = config.get("question_types", {})
+        rubrics = rubric.get("rubrics", {})
+        result = []
+        for qid in q_ids:
+            rubric_data = rubrics.get(qid, {})
+            result.append({
+                "id": qid,
+                "label": qid,
+                "type": q_types.get(qid, "collect"),
+                "scoring_criteria": rubric_data.get("scoring_criteria", {}),
+                "format_checklist": rubric_data.get("format_checklist", []),
+            })
+        return result
+
+    # Fallback: infer from rubric + wf1 record
+    scored_ids = set(rubric.get("rubrics", {}).keys())
     all_q_ids = set()
     if wf1_record:
         for key in wf1_record.keys():

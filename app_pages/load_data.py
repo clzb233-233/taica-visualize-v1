@@ -29,8 +29,9 @@ def load_default_data():
     wf1_path = os.path.join(base_path, "wf1_results.json")
     wf2_path = os.path.join(base_path, "wf2_report.json")
     csv_path = os.path.join(base_path, "W10.csv")
+    config_path = os.path.join(base_path, "config.json")
 
-    rubric = wf1 = wf2 = csv_df = None
+    rubric = wf1 = wf2 = csv_df = config = None
     tag_display = {}
 
     if os.path.exists(rubric_path):
@@ -50,12 +51,16 @@ def load_default_data():
         with open(csv_path, "rb") as f:
             csv_df = parse_csv(f.read())
 
-    return rubric, wf1, wf2, csv_df, tag_display
+    if os.path.exists(config_path):
+        with open(config_path, "r", encoding="utf-8") as f:
+            config = json.load(f)
+
+    return rubric, wf1, wf2, csv_df, tag_display, config
 
 
 # ── Auto-load data ────────────────────────────────────────────────────────────
 if st.session_state.get("rubric") is None:
-    rubric, wf1, wf2, csv_df, tag_display = load_default_data()
+    rubric, wf1, wf2, csv_df, tag_display, config = load_default_data()
     if rubric is not None:
         st.session_state.rubric = rubric
         st.session_state.tag_display = tag_display
@@ -66,6 +71,8 @@ if st.session_state.get("rubric") is None:
         st.session_state.wf2 = wf2
     if csv_df is not None:
         st.session_state.csv_df = csv_df
+    if config is not None:
+        st.session_state.viz_config = config
 
 # ── Page ──────────────────────────────────────────────────────────────────────
 st.title("📂 資料狀態")

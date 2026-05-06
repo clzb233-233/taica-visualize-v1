@@ -15,6 +15,7 @@ st.session_state.setdefault("csv_df", None)
 st.session_state.setdefault("tag_display", {})
 st.session_state.setdefault("wf1_by_index", {})
 st.session_state.setdefault("jump_to_student", None)
+st.session_state.setdefault("viz_config", None)
 
 # Check if data is loaded
 data_loaded = (
@@ -42,5 +43,12 @@ page.run()
 
 with st.sidebar:
     st.divider()
-    st.caption("**題目欄位對照**")
-    st.caption("Q1 → A 欄　Q2 → B 欄　Q3 → C 欄　Q4 → D 欄　Q5 → E 欄　Q6 → F 欄　Q7 → G 欄")
+    config = st.session_state.get("viz_config")
+    if config:
+        st.caption("**題目說明**")
+        mapping = config.get("csv_column_mapping", {})
+        for qid, info in mapping.items():
+            st.caption(f"{qid}：{info['description']}")
+    else:
+        st.caption("**題目欄位對照**")
+        st.caption("Q1 → B 欄　Q2 → C 欄　Q3 → D 欄　Q4 → E 欄　Q5 → F 欄　Q6 → G 欄　Q7 → H 欄　Q8 → I 欄")

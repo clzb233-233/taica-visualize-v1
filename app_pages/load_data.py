@@ -24,7 +24,39 @@ def parse_csv(content: bytes) -> pd.DataFrame:
 
 @st.cache_data
 def load_default_data():
+    """Load data from W{N} folder."""
     base_dir = pathlib.Path(__file__).parent.parent   # app_pages/ 的上一層 = repo 根目錄
     base_path = next(base_dir.glob("W*/"), None)      # 自動找 W* 資料夾，不 hardcode "W11"
     if base_path is None:
         return None, None, None, None, {}, None
+    rubric_path = os.path.join(base_path, "rubric.json")
+    wf1_path = os.path.join(base_path, "wf1_results.json")
+    wf2_path = os.path.join(base_path, "wf2_report.json")
+    csv_path = os.path.join(base_path, "W11.csv")
+    config_path = os.path.join(base_path, "config.json")
+
+    rubric = wf1 = wf2 = csv_df = config = None
+    tag_display = {}
+
+    if os.path.exists(rubric_path):
+        with open(rubric_path, "r", encoding="utf-8") as f:
+            rubric = json.load(f)
+        tag_display = build_tag_display(rubric)
+
+    if os.path.exists(wf1_path):
+        with open(wf1_path, "r", encoding="utf-8") as f:
+            wf1 = json.load(f)
+
+    if os.path.exists(wf2_path):
+        with open(wf2_path, "r", encoding="utf-8") as f:
+            wf2 = json.load(f)
+
+    if os.path.exists(csv_path):
+        with open(csv_path, "rb") as f:
+            csv_df = parse_csv(f.read())
+
+    if os.path.exists(config_path):
+        with open(config_path, "r", encoding="utf-8") as f:
+            config = json.load(f)
+
+    return rubric, wf1, wf2, csv_df, tag_display, config

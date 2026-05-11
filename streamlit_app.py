@@ -1,5 +1,19 @@
+import glob
+import os
 import streamlit as st
 from app_pages.load_data import load_default_data
+
+
+def detect_week_label() -> str:
+    """Read the CSV filename from the data folder to determine the current week."""
+    matches = glob.glob("W*/*.csv")
+    if matches:
+        filename = os.path.basename(matches[0])          # e.g. "W11.csv"
+        stem = os.path.splitext(filename)[0]              # e.g. "W11"
+        if stem.upper().startswith("W") and stem[1:].isdigit():
+            return f"第 {stem[1:]} 週"
+        return stem
+    return "週次未知"
 
 st.set_page_config(
     page_title="課堂分析視覺化工具",
@@ -33,6 +47,25 @@ if st.session_state.get("rubric") is None:
         st.session_state.csv_df = csv_df
     if config is not None:
         st.session_state.viz_config = config
+
+# ── Week badge (sidebar top, above navigation) ────────────────────────────────
+with st.sidebar:
+    week_label = detect_week_label()
+    st.markdown(
+        f"""
+        <div style="
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            border-radius: 10px;
+            padding: 10px 16px;
+            margin-bottom: 8px;
+            text-align: center;
+        ">
+            <div style="color: #a8c8ff; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">分析週次</div>
+            <div style="color: #ffffff; font-size: 22px; font-weight: 700; line-height: 1.3;">{week_label}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # Define pages
 overview_page = st.Page("app_pages/overview.py", title="全班概覽", icon=":material/bar_chart:")

@@ -39,19 +39,21 @@ st.session_state.setdefault("viz_config", None)
 
 # Auto-load default data on first run
 if st.session_state.get("rubric") is None:
-    rubric, wf1, wf2, csv_df, tag_display, config = load_default_data()
-    if rubric is not None:
-        st.session_state.rubric = rubric
-        st.session_state.tag_display = tag_display
-    if wf1 is not None:
-        st.session_state.wf1 = wf1
-        st.session_state.wf1_by_index = {r["student_index"]: r for r in wf1}
-    if wf2 is not None:
-        st.session_state.wf2 = wf2
-    if csv_df is not None:
-        st.session_state.csv_df = csv_df
-    if config is not None:
-        st.session_state.viz_config = config
+    result = load_default_data()
+    if result is not None:
+        rubric, wf1, wf2, csv_df, tag_display, config = result
+        if rubric is not None:
+            st.session_state.rubric = rubric
+            st.session_state.tag_display = tag_display
+        if wf1 is not None:
+            st.session_state.wf1 = wf1
+            st.session_state.wf1_by_index = {r["student_index"]: r for r in wf1}
+        if wf2 is not None:
+            st.session_state.wf2 = wf2
+        if csv_df is not None:
+            st.session_state.csv_df = csv_df
+        if config is not None:
+            st.session_state.viz_config = config
 
 # ── Week badge (sidebar top, above navigation) ────────────────────────────────
 with st.sidebar:

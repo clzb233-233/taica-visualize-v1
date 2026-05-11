@@ -24,7 +24,6 @@ def parse_csv(content: bytes) -> pd.DataFrame:
     return pd.read_csv(io.BytesIO(content))
 
 
-@st.cache_data
 def load_default_data():
     """自動找 repo 根目錄下的 W* 資料夾並載入資料。"""
     # 自動偵測 W* 資料夾（例如 W11/），不需要 hardcode 週次

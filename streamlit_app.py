@@ -1,26 +1,19 @@
 import glob
 import os
+import pathlib
 import streamlit as st
 from app_pages.load_data import load_default_data
 
 
 def detect_week_label() -> str:
-    """Read the CSV filename from the data folder to determine the current week."""
-    matches = glob.glob("W*/*.csv")
+    base_dir = pathlib.Path(__file__).parent          # streamlit_app.py 所在的資料夾，即 repo 根目錄
+    matches = list(base_dir.glob("W*/*.csv"))         # 改用 pathlib.glob，走絕對路徑
     if matches:
-        filename = os.path.basename(matches[0])          # e.g. "W11.csv"
-        stem = os.path.splitext(filename)[0]              # e.g. "W11"
+        stem = matches[0].stem                         # e.g. "W11"
         if stem.upper().startswith("W") and stem[1:].isdigit():
             return f"第 {stem[1:]} 週"
         return stem
     return "週次未知"
-
-st.set_page_config(
-    page_title="課堂分析視覺化工具",
-    page_icon="📊",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
 
 # Initialize global session state
 st.session_state.setdefault("rubric", None)

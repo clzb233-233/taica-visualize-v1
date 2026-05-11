@@ -1,9 +1,11 @@
 import json
 import io
-import os
-import pandas as pd
 import pathlib
+import pandas as pd
 import streamlit as st
+
+# repo 根目錄的絕對路徑（不管在哪個環境執行都正確）
+REPO_ROOT = pathlib.Path(__file__).parent.parent
 
 
 def build_tag_display(rubric: dict) -> dict:
@@ -24,39 +26,39 @@ def parse_csv(content: bytes) -> pd.DataFrame:
 
 @st.cache_data
 def load_default_data():
-    """Load data from W{N} folder."""
-    base_dir = pathlib.Path(__file__).parent.parent   # app_pages/ 的上一層 = repo 根目錄
-    base_path = next(base_dir.glob("W*/"), None)      # 自動找 W* 資料夾，不 hardcode "W11"
-    if base_path is None:
+    """自動找 repo 根目錄下的 W* 資料夾並載入資料。"""
+    # 自動偵測 W* 資料夾（例如 W11/），不需要 hardcode 週次
+    candidates = sorted(REPO_ROOT.glob("W*/"))
+    if not candidates:
         return None, None, None, None, {}, None
-    rubric_path = os.path.join(base_path, "rubric.json")
-    wf1_path = os.path.join(base_path, "wf1_results.json")
-    wf2_path = os.path.join(base_path, "wf2_report.json")
-    csv_path = os.path.join(base_path, "W11.csv")
-    config_path = os.path.join(base_path, "config.json")
+    base_path = candidates[-1]  # 取最新一週（資料夾名稱最大）
+
+    rubric_path  = base_path / "rubric.json"
+    wf1_path     = base_path / "wf1_results.json"
+    wf2_path     = base_path / "wf2_report.json"
+    config_path  = base_path / "config.json"
+
+    # CSV 檔名與資料夾同名（例如 W11/W11.csv）
+    csv_candidates = list(base_path.glob("*.csv"))
+    csv_path = csv_candidates[0] if csv_candidates else None
 
     rubric = wf1 = wf2 = csv_df = config = None
     tag_display = {}
 
-    if os.path.exists(rubric_path):
-        with open(rubric_path, "r", encoding="utf-8") as f:
-            rubric = json.load(f)
+    if rubric_path.exists():
+        rubric = json.loads(rubric_path.read_text(encoding="utf-8"))
         tag_display = build_tag_display(rubric)
 
-    if os.path.exists(wf1_path):
-        with open(wf1_path, "r", encoding="utf-8") as f:
-            wf1 = json.load(f)
+    if wf1_path.exists():
+        wf1 = json.loads(wf1_path.read_text(encoding="utf-8"))
 
-    if os.path.exists(wf2_path):
-        with open(wf2_path, "r", encoding="utf-8") as f:
-            wf2 = json.load(f)
+    if wf2_path.exists():
+        wf2 = json.loads(wf2_path.read_text(encoding="utf-8"))
 
-    if os.path.exists(csv_path):
-        with open(csv_path, "rb") as f:
-            csv_df = parse_csv(f.read())
+    if csv_path and csv_path.exists():
+        csv_df = parse_csv(csv_path.read_bytes())
 
-    if os.path.exists(config_path):
-        with open(config_path, "r", encoding="utf-8") as f:
-            config = json.load(f)
+    if config_path.exists():
+        config = json.loads(config_path.read_text(encoding="utf-8"))
 
     return rubric, wf1, wf2, csv_df, tag_display, config

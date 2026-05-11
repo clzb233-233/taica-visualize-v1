@@ -1,4 +1,5 @@
 import streamlit as st
+from app_pages.load_data import load_default_data
 
 st.set_page_config(
     page_title="課堂分析視覺化工具",
@@ -17,15 +18,23 @@ st.session_state.setdefault("wf1_by_index", {})
 st.session_state.setdefault("jump_to_student", None)
 st.session_state.setdefault("viz_config", None)
 
-# Check if data is loaded
-data_loaded = (
-    st.session_state.rubric is not None
-    and st.session_state.wf1 is not None
-    and st.session_state.wf2 is not None
-)
+# Auto-load default data on first run
+if st.session_state.get("rubric") is None:
+    rubric, wf1, wf2, csv_df, tag_display, config = load_default_data()
+    if rubric is not None:
+        st.session_state.rubric = rubric
+        st.session_state.tag_display = tag_display
+    if wf1 is not None:
+        st.session_state.wf1 = wf1
+        st.session_state.wf1_by_index = {r["student_index"]: r for r in wf1}
+    if wf2 is not None:
+        st.session_state.wf2 = wf2
+    if csv_df is not None:
+        st.session_state.csv_df = csv_df
+    if config is not None:
+        st.session_state.viz_config = config
 
 # Define pages
-load_page = st.Page("app_pages/load_data.py", title="載入資料", icon=":material/folder_open:")
 overview_page = st.Page("app_pages/overview.py", title="全班概覽", icon=":material/bar_chart:")
 question_page = st.Page("app_pages/question_analysis.py", title="逐題分析", icon=":material/edit_note:")
 student_page = st.Page("app_pages/student_detail.py", title="個別學生", icon=":material/manage_search:")
@@ -33,7 +42,6 @@ rubric_page = st.Page("app_pages/rubric_reference.py", title="評分標準參考
 
 page = st.navigation(
     {
-        "": [load_page],
         "分析": [overview_page, question_page, student_page, rubric_page],
     },
     position="sidebar",
